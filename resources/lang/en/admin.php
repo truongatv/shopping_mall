@@ -36,7 +36,7 @@ return [
     'unit_price' => 'Unit Price',
     'quanity' => 'Quanity',
     'order_detail' => 'Order Detail',
-    'emai' => 'Email',
+    'email' => 'Email',
     'phone' => 'Phone',
     'admin_custemor' => 'Admin/Custemor',
     'admin' => 'Admin',
@@ -51,5 +51,6 @@ return [
     'status' => 'Status',
     'done' => 'Done',
     'doing' => 'Doing',
-    'list_category' => 'List Category'
+    'list_category' => 'List Category',
+    'setup' => 'Set up',
 ];

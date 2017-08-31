@@ -58,11 +58,9 @@ class ProfileController extends Controller
         $user = Auth::user();
         $user->name = $request->name;
         $user->phone = $request->phone;
+        $user->adresses->address = $request->address;
         $user->subcribe = $request->subcribe;
         $user->email = $request->email;
-        // if ($request->avatar_image_link) {
-        //     $user->avatar_image_link = $request->avatar_image_link;
-        // }
         if ($request->avatar_image_link) {
             $image_old = Auth::user()->avatar_image_link;
             File::delete('assets/uploads/' . $image_old);

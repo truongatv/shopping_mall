@@ -1,7 +1,10 @@
 <?php
 
 return [
-    "admin" => 1,
+    'super_admin' => 1,
+    'admin' => 2,
+    'user' => 0,
+    'user_unactive' => 3,
     'user' => 0,
     'done' => 1,
     'error' => 0,

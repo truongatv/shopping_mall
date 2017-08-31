@@ -4,7 +4,7 @@
             <div class="push">
                 <i class="gi gi-shopping_bag fa-5x text-muted"></i>
             </div>
-            <a href="{{url('category')}}" class="btn btn-lg btn-primary">Explore Store <i class="fa fa-arrow-right"></i></a>
+            <a href="{{ url('/') }}" class="btn btn-lg btn-primary">Explore Store <i class="fa fa-arrow-right"></i></a>
         </div>
     </div>
 </section>

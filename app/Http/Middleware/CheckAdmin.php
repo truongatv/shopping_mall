@@ -17,7 +17,7 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->id != 1){
+        if(Auth::user()->role != 1 && Auth::user()->role != 2){
             return response(trans('errors.not_exist'), 404);
         }
 

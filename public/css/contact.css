@@ -204,7 +204,7 @@ input[type="submit"]:hover{
 }
 /*admin*/
 .header2{
-    margin: 0px 0px 30px 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 div.dataTables_filter label {
@@ -217,7 +217,6 @@ div.dataTables_filter label {
 .page-header{
     border-bottom: none;
     padding-top: 10px;
-    padding-bottom: 30px;
 }
 .admin_name{
     font-weight: normal;
@@ -238,3 +237,68 @@ div.dataTables_filter label {
 .notifi{
     color: red;
 }
+.navbar2{
+    min-height: 0px;
+    margin-bottom: 0px;
+    border-color: #337ab7;
+}
+#page-wrapper{
+    border-left: 1px solid #337ab7;
+}
+.sidebar_admin{
+    margin-top: 5px;
+}
+
+
+.nav1 ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 10px;
+}
+.nav1 li {
+  font-family: 'Sniglet', cursive;
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  border-bottom: 1px solid #888;
+}
+
+.nav1 a {
+  text-decoration: none;
+  display: block;
+  font-family: 'Sniglet', cursive;
+  transition: .3s background-color;
+  color: #f03506;
+}
+
+.nav1 a:hover {
+  background-color: #005f5f;
+  color: #fff;
+}
+
+.nav1 a.active {
+  background-color: #fff;
+  color: #444;
+  cursor: default;
+}
+
+@media screen and (min-width: 600px) {
+  .nav1 li {
+    width: 120px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+  }
+
+  /* Option 1 - Display Inline */
+  .nav1 li {
+    display: inline-block;
+    margin-right: -4px;
+  }
+
+}
+
+

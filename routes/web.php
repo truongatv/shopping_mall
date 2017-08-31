@@ -76,18 +76,23 @@ Route::group(['prefix' => 'admin'], function(){
     });
     Route::group(['prefix' => 'user'], function(){
         //admin/user/user_list
-        Route::get('user_list','AdminController@getUserList');
-        Route::get('edit_user','AdminController@getEditUser');
-        Route::get('delete/{id}','AdminController@getDeleteUser');
+        Route::get('user_list', 'AdminController@getUserList');
+        Route::get('admin_list', 'AdminController@getUserListAdmin');
+        Route::get('customer_list', 'AdminController@getUserListCustomer');
+        Route::get('setup_user/{id}', 'AdminController@getSetupUser');
+        Route::get('delete/{id}', 'AdminController@getDeleteUser');
     });
     Route::group(['prefix' => 'order'], function(){
         //admin/order/order_list
-        Route::get('order_list','AdminController@getOrderList');
-        Route::get('orderdetail_list/{order_id}','AdminController@getDetailOrder')->name('orderdetail_list');
-        Route::get('delete/{id}','AdminController@getDeleteOrder');
-        Route::get('edit_order','AdminController@getEditOrder');
+        Route::get('order_list', 'AdminController@getOrderList');
+        Route::get('order_today', 'AdminController@getOrderListToday');
+        Route::get('order_doing', 'AdminController@getOrderListDoing');
+        Route::get('order_done', 'AdminController@getOrderListDone');
+        Route::get('orderdetail_list/{order_id}', 'AdminController@getDetailOrder')->name('orderdetail_list');
+        Route::get('delete/{id}', 'AdminController@getDeleteOrder');
+        Route::get('edit_order/{id}', 'AdminController@getEditOrder');
     });
-    Route::group(['prefix' => 'ajax'],function(){
+    Route::group(['prefix' => 'ajax'], function(){
 
     });
 });

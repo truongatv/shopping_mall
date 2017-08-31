@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -80,7 +78,7 @@ class CheckOutController extends Controller
     		try {
                 $payment_info = $request->cardholder_name.' | '.$request->checkout_payments;
                 $this->checkoutRepository->savePaymentType($request, $order_id, $payment_info);
-                
+
 				return redirect()->route('checkout_confirm', $order_id);
     		} catch(\Exception $e) {
     			return redirect()->back()->withErrors('errors.add_payment');
@@ -109,7 +107,7 @@ class CheckOutController extends Controller
                     "amount" => (int)$price,
                     "currency" => "usd",
                     "source" => "tok_amex", // obtained with Stripe.js
-                    "description" => "Charge for nguyentientruong95@gmail.com and user id ".$user_id ."" 
+                    "description" => "Charge for nguyentientruong95@gmail.com and user id ".$user_id .""
                 ));
             } catch(Stripe_CardError $e) {
                 return redirect()->back();
@@ -143,6 +141,7 @@ class CheckOutController extends Controller
             });
             //create new session for use when order success
             $payment_type = new PaymentType;
+            $order = new Order;
             $payment = new Payment;
             DB::transaction(function () use($order, $payment_type, $payment) {
             	$payment_type->information = "1";

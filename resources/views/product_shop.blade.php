@@ -49,13 +49,16 @@
                             </div>
                         </div>
                         @endforeach
+                        <div class="col-md-12 text-right">
+                            <a href="#"><strong>View All</strong> <i class="fa fa-arrow-right"></i></a>
+                        </div>
                     </div>
                     <!-- END New Arrivals -->
                     <h2 class="site-heading"><strong>Best</strong> Sellers</h2>
                     <hr>
                     <div class="row store-items">
                     @foreach($topSells as $product)
-                        <div class="col-md-4" data-toggle="animation-appear" data-animation-class="animation-fadeInQuick" data-element-offset="-100">
+                        <div class="col-md-3" data-toggle="animation-appear" data-animation-class="animation-fadeInQuick" data-element-offset="-100">
                             <div class="store-item">
                                 <div class="store-item-rating text-warning">
                                     <input id="input-1-xs" name="input-1-xs" class="rating rating-loading" value="{{$product->rate_count}}" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-show-clear="false" data-show-caption="false" data-readonly = "true">
@@ -83,6 +86,9 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="col-md-12 text-right">
+                        <a href="#"><strong>View All</strong> <i class="fa fa-arrow-right"></i></a>
+                    </div>
                     </div>
                     <!-- END Best Sellers -->
                 </div>

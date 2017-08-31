@@ -40,7 +40,8 @@ class LoginController extends Controller
 
     protected function authenticated($request,$user)
     {
-        if (Auth::user()->role == config('settings.admin')) {
+        if (Auth::user()->role == 1 || Auth::user()->role == 2)
+        {
             return redirect()->intended('admin');
         }
 
