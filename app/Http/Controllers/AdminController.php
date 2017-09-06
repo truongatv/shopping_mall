@@ -30,8 +30,11 @@ class AdminController extends Controller
     public function getList()
     {
         $category = Category::all();
+        $categoryParent = Category::where('category_parent_id', NULL)->pluck('name', 'category_id')->toArray();
+        $none['0'] = "None";
+        $categoryParent = $none + $categoryParent;
 
-        return view('admin.cate_parent_list', ['category' => $category]);
+        return view('admin.category', compact('categoryParent', 'category'));
     }
 
     public function getListChild($id)
@@ -39,15 +42,6 @@ class AdminController extends Controller
         $category = Category::where('category_parent_id', $id)->get();
 
         return view('admin.cate_child_list', ['category' => $category]);
-    }
-
-    public function getAdd()
-    {
-        $categoryParent = Category::where('category_parent_id', null)->pluck('name', 'category_id')->toArray();
-        $none['0'] = "None";
-        $categoryParent = $none + $categoryParent;
-
-        return view('admin.add_category', compact('categoryParent'));
     }
 
     public function postAdd(Request $request)
@@ -64,7 +58,7 @@ class AdminController extends Controller
         $category->category_parent_id = $request->category_parent_id;
         $category->save();
 
-        return redirect('admin/category/add')->with('thongbao', 'add sucess !');
+        return redirect('admin/category/cate_list')->with('thongbao', 'add sucess !');
     }
 
     public function getEdit($id)
@@ -106,23 +100,17 @@ class AdminController extends Controller
         return redirect('admin/category/cate_list')->with('thongbao1', 'Delete Success !');
     }
 
-
-
-    //Controller Product
     public function getProductList()
     {
         $product = Product::where('status', 1)->get();
-
         return view('admin.product_list', ['product'=>$product]);
     }
-
 
     public function getAddProduct()
     {
         $category_parent = Category::where('category_parent_id',  NULL)->get();
         $category = Category::where('category_parent_id', $category_parent[0]['category_id'])->get();
         $shop_product = ShopProduct::all();
-
         return view('admin.add_product', ['category' => $category, 'shop_product' => $shop_product, 'category_parent' => $category_parent ]);
     }
 

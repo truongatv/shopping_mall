@@ -79,7 +79,6 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('user_list','AdminController@getUserList');
         Route::get('edit_user','AdminController@getEditUser');
         Route::get('delete/{id}','AdminController@getDeleteUser');
-
     });
     Route::group(['prefix' => 'order'], function(){
         //admin/order/order_list

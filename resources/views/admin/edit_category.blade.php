@@ -30,7 +30,6 @@
                     <input class="form-control" name="name" placeholder="{{ trans('admin.please_enter_category_name') }}" value="{{ $category->name }}"/>
                 </div>
                 <button type="submit" class="btn btn-default">{{ trans('admin.edit') }}</button>
-                <button type="reset" class="btn btn-default">{{ trans('admin.reset') }}</button>
             </form>
         </div>
     </div>

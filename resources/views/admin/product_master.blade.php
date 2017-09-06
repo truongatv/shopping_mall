@@ -42,14 +42,6 @@
                             </li>
                             <li>
                                 <a href="{{ action('AdminController@getList') }}"><i class="fa fa-bar-chart-o fa-fw"></i>{{ trans('admin.category') }}<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="{{ action('AdminController@getList') }}">{{ trans('admin.list_category') }}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ action('AdminController@getAdd') }}">{{ trans('admin.add_category') }}</a>
-                                    </li>
-                                </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>

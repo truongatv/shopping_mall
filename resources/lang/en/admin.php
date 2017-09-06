@@ -21,7 +21,7 @@ return [
     'delete' => 'Delete',
     'id' => 'ID',
     'name' => 'Name',
-    'category_child' => 'Category Child',
+    'category_child' => 'List child',
     'explore_over' => 'Explore over 50 products!',
     'notification' => 'Notification',
     'admin_area' => 'Admin area',
