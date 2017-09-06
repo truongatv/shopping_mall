@@ -1,0 +1,22 @@
+##ElasticquentResultCollection.php
+public function getItems()
+    {
+        return $this->items;
+    }
+
+###ElasticquentTrait.php
+
+    public static function complexSearchAndPaginate($params, $size = 10000)
+    {
+        $instance = new static;
+
+        $page = \Elasticquent\ElasticquentPaginator::resolveCurrentPage() ?: 1;
+
+        $params["body"]["size"] = $size;
+        $params["body"]["from"] = ($page - 1) * $size;
+
+        $result = $instance->getElasticSearchClient()->search($params);
+        $collection = new \Elasticquent\ElasticquentResultCollection($result, $instance = new static);
+
+        return new \Elasticquent\ElasticquentPaginator($collection->getItems(), $collection->getHits(), $collection->totalHits(), $size, $page, ['path' => \Elasticquent\ElasticquentPaginator::resolveCurrentPath()]);
+    }
