@@ -1,11 +1,6 @@
 @extends('admin.product_master')
 @section('product')
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header header2">{{ trans('admin.product') }}
-                <small>{{ trans('admin.list') }}</small>
-            </h1>
-        </div>
         <!-- /.col-lg-12 -->
         @if(session('thongbao1'))
             <div class="alert alert-success">

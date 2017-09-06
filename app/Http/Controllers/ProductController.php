@@ -38,18 +38,31 @@ class ProductController extends Controller
     {
         $comments = $this->productRepository->getComments($request->product_id);
         $product = $this->productRepository->getProducts($request->product_id);
-        $order = $this->orderRepository->getOrder($request->product_id);
         $group = "";
         $name = "";
 
-        return view('product_details', compact(
-            'product',
-            'order',
-            'comments',
-            'group',
-            'name'
-            )
-        );
+        if (!Auth::check()) {
+            return view('product_details')->with(compact(
+                'product',
+                'comments',
+                'group',
+                'name'
+                )
+            );
+        }
+        else {
+            $order = $this->orderRepository->getUserOrder();
+
+            return view('product_details')->with(compact(
+                'product',
+                'comments',
+                'order',
+                'group',
+                'name'
+                )
+            );
+
+        }
     }
 
     public function getNewArrival(){

@@ -10,7 +10,6 @@
     <section class="site-content site-section site-section2">
         <div id="wrapper">
             <!-- Navigation -->
-            <div class="noti"><span class="notifi">{{ trans('admin.notification') }}</span> : <a href="#">{{ trans('admin.thongbao') }}</a></div>
             <nav class="navbar navbar-default navbar-static-top" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,7 +18,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">{{ trans('admin.admin_area') }} - <span class="admin_name">{{ Auth::user()->name }}</span></a>
                 </div>
                 <!-- /.navbar-header -->
                 <!-- /.navbar-top-links -->
@@ -42,15 +40,6 @@
                             </li>
                             <li>
                                 <a href="{{ action('AdminController@getList') }}"><i class="fa fa-bar-chart-o fa-fw"></i>{{ trans('admin.category') }}<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="{{ action('AdminController@getList') }}">{{ trans('admin.list_category') }}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ action('AdminController@getAdd') }}">{{ trans('admin.add_category') }}</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="{{ action('AdminController@getProductList') }}"><i class="fa fa-cube fa-fw"></i>{{ trans('admin.product') }}<span class="fa arrow"></span></a>
