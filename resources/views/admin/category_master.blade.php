@@ -10,7 +10,8 @@
     <section class="site-content site-section site-section2">
         <div id="wrapper">
             <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="noti"><span class="notifi">{{ trans('admin.notification') }}</span> : <a href="#">{{ trans('admin.thongbao') }}</a></div>
+            <nav class="navbar navbar-default navbar-static-top navbar2" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">{{ trans('admin.toggle_navigation') }}</span>

@@ -1,47 +1,58 @@
 .fa-shopping-cart:before {
     color: #1bbae1;
 }
+
 .bigicon{
     font-size: 200%;
     padding-top: 10px;
 }
+
 .themed-color-dark　{
     color : #5f849c;
 }
+
 .store-menu, .submenu a.submenuli{
     background-color: #fff;
     padding: 5px 10px 10px;
     font-size: 100%;
 }
+
 .submenu{
     font-size: 125%;
     font-family: 'Sniglet', cursive;
 }
+
 .store-menu ul li{
     background-color: #fff;
     font-size: 100%;
     font-family: 'Sniglet', cursive;
 }
+
 .container　{
     padding-left: 0px;
 }
+
 .store-menu > li > a.submenua{
     padding: 10px;
     border-top: 1px solid #f0ebeb;
     font-family: 'Sniglet', cursive;
 }
+
 .store-menu ul li.submenuli{
     border-bottom: dashed 1px #e2e5ea;
     background-color: #fff;
     font-family: 'Sniglet', cursive;
 }
+
 .reply1 {　
     padding-left: 55px;
     padding-left: 55px;
 }
+
 .site-logo{
     font-family: 'Sniglet', cursive;
 }
+
 .field {
   background: transparent;
   font-weight: 300;
@@ -57,5 +68,17 @@
 }
 
 .field::-webkit-input-placeholder { color: #CFD7E0; }
+
 .field::-moz-placeholder { color: #CFD7E0; }
+
 .field:-ms-input-placeholder { color: #CFD7E0; }
+
+.doing{
+    color: #fff;
+}
+
+.doing:hover{
+    color: #fff;
+    text-decoration: none;
+}
+

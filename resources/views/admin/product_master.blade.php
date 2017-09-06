@@ -11,7 +11,7 @@
         <div id="wrapper">
             <!-- Navigation -->
             <div class="noti"><span class="notifi">{{ trans('admin.notification') }}</span> : <a href="#">{{ trans('admin.thongbao') }}</a></div>
-            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <nav class="navbar navbar-default navbar-static-top navbar2" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">{{ trans('admin.toggle_navigation') }}</span>
@@ -19,7 +19,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">{{ trans('admin.admin_area') }} - <span class="admin_name">{{ Auth::user()->name }}</span></a>
+                    <!-- <a class="navbar-brand" href="index.html">{{ trans('admin.admin_area') }} - <span class="admin_name">{{ Auth::user()->name }}</span></a> -->
                 </div>
                 <!-- /.navbar-header -->
                 <!-- /.navbar-top-links -->

@@ -11,7 +11,7 @@
         <div id="wrapper">
             <!-- Navigation -->
             <div class="noti"><span class="notifi">{{ trans('admin.notification') }}</span> : <a href="#">{{ trans('admin.thongbao') }}</a></div>
-            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <nav class="navbar navbar-default navbar-static-top navbar2" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">{{ trans('admin.toggle_navigation') }}</span>
@@ -19,8 +19,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">{{ trans('admin.admin_area') }} - <span class="admin_name">{{ Auth::user()->name }}</span></a>
+                    <!-- <a class="navbar-brand" href="index.html">{{ trans('admin.admin_area') }} - <span class="admin_name">{{ Auth::user()->name }}</span></a> -->
                 </div>
+                <body class="news">
+
                 <!-- /.navbar-header -->
                 <!-- /.navbar-top-links -->
                 <div class="navbar-default sidebar_admin" role="navigation">
@@ -80,12 +82,35 @@
             <!-- Page Content -->
             <div id="page-wrapper">
                 <div class="container-fluid">
-                    @yield('order')
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header header2">{{ trans('admin.order') }}
+                                <small>{{ trans('admin.list') }}</small>
+                            </h1>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="nav1">
+                              <ul>
+                                <li class="home"><a href="{{ action('AdminController@getOrderList') }}">All Order</a></li>
+                                <li class="contact"><a href="{{ action('AdminController@getOrderListToday') }}">Order Today</a></li>
+                                <li class="about"><a href="{{ action('AdminController@getOrderListDoing') }}">Order Doing</a></li>
+                                <li class="contact"><a href="{{ action('AdminController@getOrderListDone') }}">Order Done</a></li>
+                              </ul>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                        @if(session('thongbao1'))
+                            <div class="alert alert-success">
+                                {{ session('thongbao1') }}
+                            </div>
+                        @endif
+                        @yield('order')
+                    </div>
+                    <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- /#page-wrapper -->
-
         </div>
     </section>
 @endsection

@@ -13,6 +13,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use DateTime;
 
 
 class AdminController extends Controller
@@ -42,6 +43,15 @@ class AdminController extends Controller
         $category = Category::where('category_parent_id', $id)->get();
 
         return view('admin.cate_child_list', ['category' => $category]);
+    }
+
+    public function getAdd()
+    {
+        $categoryParent = Category::where('category_parent_id', 0)->pluck('name', 'category_id')->toArray();
+        $none['0'] = "None";
+        $categoryParent = $none + $categoryParent;
+
+        return view('admin.add_category', compact('categoryParent'));
     }
 
     public function postAdd(Request $request)
@@ -108,7 +118,7 @@ class AdminController extends Controller
 
     public function getAddProduct()
     {
-        $category_parent = Category::where('category_parent_id',  NULL)->get();
+        $category_parent = Category::where('category_parent_id', 0)->get();
         $category = Category::where('category_parent_id', $category_parent[0]['category_id'])->get();
         $shop_product = ShopProduct::all();
         return view('admin.add_product', ['category' => $category, 'shop_product' => $shop_product, 'category_parent' => $category_parent ]);
@@ -151,11 +161,6 @@ class AdminController extends Controller
         $file = $request->file('image_link');
         $name = time() . '_' . $file->getClientOriginalName();
         $file->move('assets/uploads', $name);
-
-        // $image = Image::create([
-        //     'link' => $name,
-        //     'product_id' => $product->product_id,
-        //     ]);
         $image = new Image;
         $image['link'] = $name;
         $image['product_id'] = $product->product_id;
@@ -239,23 +244,69 @@ class AdminController extends Controller
     //Controller User
     public function getUserList()
     {
-        $user = User::all();
+        $user = User::where('role', '<>', 3)->get();
 
         return view('admin.user_list', ['user'=>$user]);
+    }
+
+    public function getUserListAdmin()
+    {
+        $user = User::where('role',1)
+            ->orwhere('role',2)
+            ->get();
+
+        return view('admin.admin_list', ['user'=>$user]);
+    }
+    public function getUserListCustomer()
+    {
+        $user = User::where('role', 0)->get();
+
+        return view('admin.customer_list', ['user'=>$user]);
     }
 
     public function getDeleteUser($id)
     {
         $user =  User::find($id);
-        $user->delete();
+        $user->role = 3;
+        $user->save();
 
         return redirect('admin/user/user_list')->with('thongbao1', 'Delete Success !');
+    }
+
+    public function getSetupUser($id)
+    {
+        $user =  User::find($id);
+        if( $user->role == 0) {
+            $user->role = 2;
+        } elseif ($user->role == 2)
+            $user->role = 0;
+        $user->save();
+
+        return redirect('admin/user/user_list');
     }
 
     //Controller Order
     public function getOrderList()
     {
-        $order = Order::all();
+        $order = Order::where('status', '<>', 2)->get();
+
+        return view('admin.order_list', ['order'=>$order]);
+    }
+    public function getOrderListToday()
+    {
+        $date = new DateTime('today');
+        $order = Order::where('created_at', '>', $date)->get();
+        return view('admin.order_list', ['order'=>$order]);
+    }
+    public function getOrderListDoing()
+    {
+        $order = Order::where('status', 0)->get();
+
+        return view('admin.order_list', ['order'=>$order]);
+    }
+    public function getOrderListDone()
+    {
+        $order = Order::where('status', 1)->get();
 
         return view('admin.order_list', ['order'=>$order]);
     }
@@ -263,16 +314,26 @@ class AdminController extends Controller
     public function getDetailOrder($id)
     {
         $orderdetail = OrderDetail::where('order_id', $id)->get();
-        $order = Order::where('order_id',$id)->get();
+        $order = Order::where('order_id', $id)->get();
+
         return view('admin.detail_order', ['orderdetail' => $orderdetail, 'order' => $order]);
     }
 
     public function getDeleteOrder($id)
     {
         $order =  Order::find($id);
-        $order->delete();
+        $order->status = 2;
+        $order->save();
 
         return redirect('admin/order/order_list')->with('thongbao1', 'Delete Success !');
+    }
+    public function getEditOrder($id)
+    {
+        $order =  Order::find($id);
+        $order->status = 1;
+        $order->save();
+
+        return redirect('admin/order/order_list');
     }
 
 }

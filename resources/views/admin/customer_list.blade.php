@@ -7,7 +7,7 @@
                 <th>{{ trans('admin.name') }}</th>
                 <th>{{ trans('admin.email') }}</th>
                 <th>{{ trans('admin.phone') }}</th>
-                <th>{{ trans('admin.admin_custemor') }}</th>
+                <th>{{ trans('admin.customer') }}</th>
                 @if(Auth::user()->role == 1)
                     <th>{{ trans('admin.setup') }}</th>
                 @endif

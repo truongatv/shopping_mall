@@ -17,11 +17,19 @@
             <input class="input" type="hidden" name="_token" value="{!! csrf_token() !!}" />
             <div class="formgroup" id="name-form">
                 <label class="label" for="name">Your name*</label>
-                <input class="input" type="text" id="name" name="name" value="{{ Auth::user()->name }}"/>
+                @if(auth()->check())
+                    <input class="input" type="text" id="name" name="name" value="{{ Auth::user()->name }}"/>
+                @else
+                    <input class="input" type="text" id="name" name="name"/>
+                @endif
             </div>
             <div class="formgroup" id="email-form">
                 <label class="label" for="email">Your e-mail*</label>
-                <input class="input" type="email" id="email" name="email" value="{{ Auth::user()->email }}"/>
+                @if(auth()->check())
+                    <input class="input" type="email" id="email" name="email" value="{{ Auth::user()->email }}"/>
+                @else
+                <input class="input" type="email" id="email" name="email"/>
+                @endif
             </div>
             <div class="formgroup" id="message-form">
                 <label class="label" for="message">Your message</label>
